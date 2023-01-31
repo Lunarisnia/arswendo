@@ -4,11 +4,13 @@ const Greeting = () => {
   return (
     <Box
       sx={{
+        backgroundColor: "#42a5f5",
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
         height: "100vh",
+        width: 1
       }}
     >
       <Typography variant="h1" data-aos="fade-up">

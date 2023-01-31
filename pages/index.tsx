@@ -6,11 +6,10 @@ import WhatIDo from "../components/whatido";
 export default function Home() {
   return (
     <>
-      <Container maxWidth={false} sx={{ backgroundColor: "lightblue" }}>
-        <Greeting />
-        <WhatIDo />
-        <ContactMe />
-      </Container>
+      <Greeting />
+      <WhatIDo />
+      {/* Add My Work History And Projects Section */}
+      <ContactMe />
     </>
   );
 }

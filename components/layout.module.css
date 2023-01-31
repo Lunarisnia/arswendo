@@ -13,3 +13,11 @@
 .backToHome {
   margin: 3rem 0 0;
 }
+
+.xToWhatIDo {
+  background: linear-gradient(180deg, rgba(66,165,245,1) 0%, rgba(41,121,255,1) 62%);
+}
+
+.xToContactMe {
+  background: linear-gradient(180deg, rgba(41,121,255,1) 5%, rgba(26,35,126,1) 45%);
+}

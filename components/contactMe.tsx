@@ -1,22 +1,25 @@
 import { Email, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Link from "next/link";
+import styles from './layout.module.css';
 
 const ContactMe = () => {
   return (
     <Box
+      className={styles.xToContactMe}
       sx={{
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
         height: "100vh",
+        width: 1
       }}
     >
       <Container>
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <Typography variant="h1" data-aos="fade-down">
+            <Typography variant="h1" data-aos="fade-down" color='white'>
               Get in contact with me on:
             </Typography>
           </Grid>

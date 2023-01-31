@@ -24,10 +24,12 @@ const WhatIDo = () => {
               Based In
             </Typography>
           </Grid>
-          <Grid item xs={5}>
-            <Typography variant="h1" data-aos="fade-left" data-aos-delay="500">
+          <Grid item xs={9}>
+            <Typography variant="h1" data-aos="fade-left" data-aos-delay="500" fontSize={190}>
               Indonesia
             </Typography>
+          </Grid>
+          <Grid item xs={5}>
           </Grid>
           <Grid item xs={2}>
             <Image

@@ -6,6 +6,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "^11.10.5",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "@next/font": "latest",
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "date-fns": "^2.29.3",
     "gray-matter": "^4.0.3",
     "next": "latest",

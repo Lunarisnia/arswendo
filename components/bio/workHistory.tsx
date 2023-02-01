@@ -93,8 +93,6 @@ const WorkHistory = () => {
     </Box>
   );
 };
-// Todo: Make Card Media load different images depending on the array
-// Todo: make the card body dynamic
 
 interface HistoryCard {
   position: string;
@@ -181,7 +179,6 @@ const WorkData = ({ cardImage, jobDesk }: WorkDataType) => {
     <Card data-aos="fade-up" data-aos-delay="200">
       <CardMedia
         component="img"
-        sx={{ height: 200 }}
         image={cardImage}
         alt="Work Photo"
       />

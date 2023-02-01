@@ -18,14 +18,12 @@ dayjs.extend(relativeTime);
 const MONTH_YEAR = "MMMM YYYY";
 
 const WorkHistory = () => {
-  const heightIncrement = 50;
-  const boxHeight = 50 + experiences.length * heightIncrement; // Will Expand Depending on how many card
-
   const history = experiences.map((exp, idx) => {
     const {
       is_freelance: isFreelance,
       office_name: officeName,
       job_desk: jobDesk,
+      image: cardImage,
       position,
       from,
       to,
@@ -45,6 +43,8 @@ const WorkHistory = () => {
         key={idx}
         to={to}
         isFreelance={isFreelance}
+        jobDesk={jobDesk}
+        cardImage={cardImage}
       ></LeftCard>
     ) : (
       <RightCard
@@ -55,6 +55,8 @@ const WorkHistory = () => {
         key={idx}
         to={to}
         isFreelance={isFreelance}
+        jobDesk={jobDesk}
+        cardImage={cardImage}
       ></RightCard>
     );
   });
@@ -64,10 +66,9 @@ const WorkHistory = () => {
       sx={{
         backgroundColor: "#42a5f5",
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: "stretch",
         flexDirection: "column",
         alignItems: "center",
-        height: `${boxHeight}vh`, // Todo: Make this dynamic by increasing by 50 everytime another card is added
         width: 1,
       }}
     >
@@ -85,6 +86,10 @@ const WorkHistory = () => {
           {history}
         </Grid>
       </Container>
+      <br />
+      <br />
+      <br />
+      <br />
     </Box>
   );
 };
@@ -98,6 +103,8 @@ interface HistoryCard {
   from: string;
   to: string;
   isFreelance?: boolean;
+  jobDesk: Array<string>;
+  cardImage: string;
 }
 
 const LeftCard = ({
@@ -107,11 +114,13 @@ const LeftCard = ({
   from,
   to,
   isFreelance,
+  jobDesk,
+  cardImage,
 }: HistoryCard) => {
   return (
     <>
       <Grid item xs={4}>
-        <WorkData />
+        <WorkData cardImage={cardImage} jobDesk={jobDesk} />
       </Grid>
       <Grid item xs={4}>
         <GeneralInfo
@@ -136,6 +145,8 @@ const RightCard = ({
   from,
   to,
   isFreelance,
+  jobDesk,
+  cardImage,
 }: HistoryCard) => {
   return (
     <>
@@ -152,19 +163,26 @@ const RightCard = ({
         />
       </Grid>
       <Grid item xs={4}>
-        <WorkData />
+        <WorkData cardImage={cardImage} jobDesk={jobDesk} />
       </Grid>
     </>
   );
 };
 
-const WorkData = () => {
+interface WorkDataType {
+  cardImage: string;
+  jobDesk: Array<string>;
+}
+
+const WorkData = ({ cardImage, jobDesk }: WorkDataType) => {
+  const jobDeskList = jobDesk.map((job) => (<li>{job}</li>));
+
   return (
     <Card data-aos="fade-up" data-aos-delay="200">
       <CardMedia
         component="img"
         sx={{ height: 200 }}
-        image="/images/placeholder.png"
+        image={cardImage}
         alt="Work Photo"
       />
       <CardContent>
@@ -173,15 +191,7 @@ const WorkData = () => {
         </Typography>
         <Typography variant="body1" paragraph component="span">
           <ul>
-            <li>
-              Developed a Back End using ExpressJS for an urgent AI Analytics
-              project in under A Week.
-            </li>
-            <li>
-              Worked closely with Quality Assurance to deliver high quality
-              product.
-            </li>
-            <li>Written a lot of unit test.</li>
+            {jobDeskList}
           </ul>
         </Typography>
       </CardContent>

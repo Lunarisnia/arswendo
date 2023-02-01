@@ -1,0 +1,34 @@
+[
+  {
+    "position": "Full Stack Web Developer",
+    "office_name": "Sinarmas Mining (PT Golden Energy Mines)",
+    "is_freelance": false,
+    "from": "05-01-2020",
+    "to": "",
+    "image": "/images/simasmining.jpg",
+    "job_desk": [
+        "Developed a Back End using ExpressJS for an urgent AI Analytics project in under A Week.",
+        "Develop and maintain internal applications using Vue.js.",
+        "Developed integrations with Solar Panel providers to fetch solar panel status.",
+        "Integrating StrapiCMS to backend services.",
+        "Integrating 3rd party payment providers to backend services (Midtrans, Faspay).",
+        "Worked closely with Quality Assurance to deliver high quality product.",
+        "Worked on Postgresql, mysql using Sequelize ORM",
+        "Worked on a non relational database such as MongoDB.",
+        "Integrating, logging and debugging Back End Services with Sentry",
+        "Integration with Firebase Cloud Messaging for push notifications.",
+        "Written a lot of unit test."
+    ]
+  },
+  {
+    "position": "Software Developer",
+    "office_name": "Pasar Musik 2023",
+    "is_freelance": true,
+    "from": "01-01-2023",
+    "to": "02-10-2023",
+    "image": "/images/pasarmusik2023.jpeg",
+    "job_desk": [
+        "Helped generate 100+ ID Cards with Photo, Names, Title on a template for staff, guest starts etc. Using OpenCV, Pillow, MATPLOTLIB."      
+    ]
+  }
+]

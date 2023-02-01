@@ -76,7 +76,7 @@ const WorkHistory = () => {
       <br />
       <br />
       <br />
-      <Typography variant="h1">Work History</Typography>
+      <Typography variant="h1" data-aos="fade-up" component='div'>Work History</Typography>
       <br />
       <br />
       <br />

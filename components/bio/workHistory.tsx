@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Chip,
   Container,
   Grid,
   Typography,
@@ -11,7 +12,7 @@ import experiences from "../../bin/experiences.json";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import relativeTime from "dayjs/plugin/relativeTime";
-import humanizeDuration from 'humanize-duration';
+import humanizeDuration from "humanize-duration";
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 const MONTH_YEAR = "MMMM YYYY";
@@ -29,18 +30,13 @@ const WorkHistory = () => {
       from,
       to,
     } = exp;
-    const rawDuration = dayjs.duration(dayjs(to === '' ? undefined : to).diff(dayjs(from)));
-    const duration = humanizeDuration(rawDuration.asMilliseconds(), { largest: 2 });
+    const rawDuration = dayjs.duration(
+      dayjs(to === "" ? undefined : to).diff(dayjs(from))
+    );
+    const duration = humanizeDuration(rawDuration.asMilliseconds(), {
+      largest: 2,
+    });
     return idx % 2 == 0 ? (
-      <RightCard
-        officeName={officeName}
-        position={position}
-        duration={duration}
-        from={from}
-        key={idx}
-        to={to}
-      ></RightCard>
-    ) : (
       <LeftCard
         officeName={officeName}
         position={position}
@@ -48,7 +44,18 @@ const WorkHistory = () => {
         from={from}
         key={idx}
         to={to}
+        isFreelance={isFreelance}
       ></LeftCard>
+    ) : (
+      <RightCard
+        officeName={officeName}
+        position={position}
+        duration={duration}
+        from={from}
+        key={idx}
+        to={to}
+        isFreelance={isFreelance}
+      ></RightCard>
     );
   });
 
@@ -90,6 +97,7 @@ interface HistoryCard {
   officeName: string;
   from: string;
   to: string;
+  isFreelance?: boolean;
 }
 
 const LeftCard = ({
@@ -98,6 +106,7 @@ const LeftCard = ({
   officeName,
   from,
   to,
+  isFreelance,
 }: HistoryCard) => {
   return (
     <>
@@ -111,6 +120,7 @@ const LeftCard = ({
           officeName={officeName}
           from={from}
           to={to}
+          isFreelance={isFreelance}
           align="left"
         />
       </Grid>
@@ -125,6 +135,7 @@ const RightCard = ({
   officeName,
   from,
   to,
+  isFreelance,
 }: HistoryCard) => {
   return (
     <>
@@ -136,6 +147,7 @@ const RightCard = ({
           to={to}
           duration={duration}
           officeName={officeName}
+          isFreelance={isFreelance}
           align="right"
         />
       </Grid>
@@ -184,6 +196,7 @@ interface GeneralInfoType {
   from: string;
   to: string;
   align: "left" | "right";
+  isFreelance?: boolean;
 }
 
 const GeneralInfo = ({
@@ -193,7 +206,16 @@ const GeneralInfo = ({
   align,
   from,
   to,
+  isFreelance,
 }: GeneralInfoType) => {
+  const freelanceChip = isFreelance ? (
+    <Typography align={align} variant="body1" data-aos="fade-up">
+      <Chip label="Freelance" color="success" />
+    </Typography>
+  ) : (
+    <></>
+  );
+
   return (
     <>
       <Typography align={align} variant="h4" data-aos="fade-up">
@@ -209,6 +231,7 @@ const GeneralInfo = ({
       <Typography align={align} variant="body1" data-aos="fade-up">
         {duration}
       </Typography>
+      {freelanceChip}
     </>
   );
 };

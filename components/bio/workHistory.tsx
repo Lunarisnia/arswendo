@@ -8,14 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import experiences from "../../bin/experiences.json";
-import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration';
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import relativeTime from "dayjs/plugin/relativeTime";
+import humanizeDuration from 'humanize-duration';
 dayjs.extend(duration);
+dayjs.extend(relativeTime);
 const MONTH_YEAR = "MMMM YYYY";
 
 const WorkHistory = () => {
   const heightIncrement = 50;
-  const boxHeight = 50 + (experiences.length * heightIncrement); // Will Expand Depending on how many card
+  const boxHeight = 50 + experiences.length * heightIncrement; // Will Expand Depending on how many card
 
   const history = experiences.map((exp, idx) => {
     const {
@@ -26,7 +29,8 @@ const WorkHistory = () => {
       from,
       to,
     } = exp;
-    const duration = from + to;
+    const rawDuration = dayjs.duration(dayjs(to === '' ? undefined : to).diff(dayjs(from)));
+    const duration = humanizeDuration(rawDuration.asMilliseconds(), { largest: 2 });
     return idx % 2 == 0 ? (
       <RightCard
         officeName={officeName}
@@ -84,11 +88,17 @@ interface HistoryCard {
   position: string;
   duration: string;
   officeName: string;
-  from: string,
-  to: string
+  from: string;
+  to: string;
 }
 
-const LeftCard = ({ position, duration, officeName, from, to }: HistoryCard) => {
+const LeftCard = ({
+  position,
+  duration,
+  officeName,
+  from,
+  to,
+}: HistoryCard) => {
   return (
     <>
       <Grid item xs={4}>
@@ -109,7 +119,13 @@ const LeftCard = ({ position, duration, officeName, from, to }: HistoryCard) => 
   );
 };
 
-const RightCard = ({ position, duration, officeName, from, to }: HistoryCard) => {
+const RightCard = ({
+  position,
+  duration,
+  officeName,
+  from,
+  to,
+}: HistoryCard) => {
   return (
     <>
       <Grid item xs={4}></Grid>
@@ -165,8 +181,8 @@ interface GeneralInfoType {
   position: string;
   officeName: string;
   duration: string;
-  from: string,
-  to: string,
+  from: string;
+  to: string;
   align: "left" | "right";
 }
 
@@ -175,8 +191,8 @@ const GeneralInfo = ({
   officeName,
   duration,
   align,
-  from, 
-  to
+  from,
+  to,
 }: GeneralInfoType) => {
   return (
     <>
@@ -187,7 +203,8 @@ const GeneralInfo = ({
         {officeName}
       </Typography>
       <Typography align={align} variant="body1" data-aos="fade-up">
-        {dayjs(from).format(MONTH_YEAR)} - {to === '' ? 'Current' : dayjs(to).format(MONTH_YEAR)}
+        {dayjs(from).format(MONTH_YEAR)} -{" "}
+        {to === "" ? "Current" : dayjs(to).format(MONTH_YEAR)}
       </Typography>
       <Typography align={align} variant="body1" data-aos="fade-up">
         {duration}

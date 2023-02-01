@@ -7,9 +7,47 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { ReactNode } from "react";
+import experiences from "../../bin/experiences.json";
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+dayjs.extend(duration);
+const MONTH_YEAR = "MMMM YYYY";
 
 const WorkHistory = () => {
+  const heightIncrement = 50;
+  const boxHeight = 50 + (experiences.length * heightIncrement); // Will Expand Depending on how many card
+
+  const history = experiences.map((exp, idx) => {
+    const {
+      is_freelance: isFreelance,
+      office_name: officeName,
+      job_desk: jobDesk,
+      position,
+      from,
+      to,
+    } = exp;
+    const duration = from + to;
+    return idx % 2 == 0 ? (
+      <RightCard
+        officeName={officeName}
+        position={position}
+        duration={duration}
+        from={from}
+        key={idx}
+        to={to}
+      ></RightCard>
+    ) : (
+      <LeftCard
+        officeName={officeName}
+        position={position}
+        duration={duration}
+        from={from}
+        key={idx}
+        to={to}
+      ></LeftCard>
+    );
+  });
+
   return (
     <Box
       sx={{
@@ -18,7 +56,7 @@ const WorkHistory = () => {
         justifyContent: "flex-start",
         flexDirection: "column",
         alignItems: "center",
-        height: "400vh", // Todo: Make this dynamic by increasing by 100 everytime another card is added
+        height: `${boxHeight}vh`, // Todo: Make this dynamic by increasing by 50 everytime another card is added
         width: 1,
       }}
     >
@@ -32,11 +70,8 @@ const WorkHistory = () => {
       <br />
       <br />
       <Container>
-        <Grid container rowSpacing={40} columnSpacing={2}>
-          <LeftCard />
-          <RightCard />
-          <LeftCard />
-          <RightCard />
+        <Grid container rowSpacing={1} columnSpacing={2}>
+          {history}
         </Grid>
       </Container>
     </Box>
@@ -44,8 +79,16 @@ const WorkHistory = () => {
 };
 // Todo: Make Card Media load different images depending on the array
 // Todo: make the card body dynamic
-// Todo: Map my work history on an array
-const LeftCard = () => {
+
+interface HistoryCard {
+  position: string;
+  duration: string;
+  officeName: string;
+  from: string,
+  to: string
+}
+
+const LeftCard = ({ position, duration, officeName, from, to }: HistoryCard) => {
   return (
     <>
       <Grid item xs={4}>
@@ -53,9 +96,11 @@ const LeftCard = () => {
       </Grid>
       <Grid item xs={4}>
         <GeneralInfo
-          position="[Position]"
-          duration="[Duration]"
-          officeName="[At OfficeName]"
+          position={position}
+          duration={duration}
+          officeName={officeName}
+          from={from}
+          to={to}
           align="left"
         />
       </Grid>
@@ -64,15 +109,17 @@ const LeftCard = () => {
   );
 };
 
-const RightCard = () => {
+const RightCard = ({ position, duration, officeName, from, to }: HistoryCard) => {
   return (
     <>
       <Grid item xs={4}></Grid>
       <Grid item xs={4}>
         <GeneralInfo
-          position="[Position]"
-          duration="[Duration]"
-          officeName="[At OfficeName]"
+          position={position}
+          from={from}
+          to={to}
+          duration={duration}
+          officeName={officeName}
           align="right"
         />
       </Grid>
@@ -85,7 +132,7 @@ const RightCard = () => {
 
 const WorkData = () => {
   return (
-    <Card data-aos='fade-up' data-aos-delay='200'>
+    <Card data-aos="fade-up" data-aos-delay="200">
       <CardMedia
         component="img"
         sx={{ height: 200 }}
@@ -96,7 +143,7 @@ const WorkData = () => {
         <Typography gutterBottom variant="h5">
           Responsibilities
         </Typography>
-        <Typography variant="body1" paragraph component='span'>
+        <Typography variant="body1" paragraph component="span">
           <ul>
             <li>
               Developed a Back End using ExpressJS for an urgent AI Analytics
@@ -115,26 +162,36 @@ const WorkData = () => {
 };
 
 interface GeneralInfoType {
-  children?: ReactNode;
   position: string;
   officeName: string;
   duration: string;
+  from: string,
+  to: string,
   align: "left" | "right";
 }
 
 const GeneralInfo = ({
-  children,
   position,
   officeName,
   duration,
   align,
+  from, 
+  to
 }: GeneralInfoType) => {
   return (
     <>
-      <Typography align={align} data-aos="fade-up">{position}</Typography>
-      <Typography align={align} data-aos="fade-up">{officeName}</Typography>
-      <Typography align={align} data-aos="fade-up">{duration}</Typography>
-      {children}
+      <Typography align={align} variant="h4" data-aos="fade-up">
+        {position}
+      </Typography>
+      <Typography align={align} variant="subtitle1" data-aos="fade-up">
+        {officeName}
+      </Typography>
+      <Typography align={align} variant="body1" data-aos="fade-up">
+        {dayjs(from).format(MONTH_YEAR)} - {to === '' ? 'Current' : dayjs(to).format(MONTH_YEAR)}
+      </Typography>
+      <Typography align={align} variant="body1" data-aos="fade-up">
+        {duration}
+      </Typography>
     </>
   );
 };

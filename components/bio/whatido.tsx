@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import styles from './layout.module.css';
+import styles from '../layout.module.css';
 
 const WhatIDo = () => {
   return (
@@ -28,7 +28,7 @@ const WhatIDo = () => {
             </Typography>
           </Grid>
           <Grid item xs={9}>
-            <Typography variant="h1" data-aos="fade-left" data-aos-delay="500" fontSize={190}>
+            <Typography variant="h1" data-aos="fade-left" data-aos-delay="300" fontSize={190}>
               Indonesia
             </Typography>
           </Grid>
@@ -41,7 +41,7 @@ const WhatIDo = () => {
               height={144}
               alt="profile"
               data-aos="zoom-in-up"
-              data-aos-delay="700"
+              data-aos-delay="400"
             ></Image>
           </Grid>
         </Grid>

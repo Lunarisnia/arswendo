@@ -1,7 +1,7 @@
 import { Email, Instagram, LinkedIn, Twitter } from "@mui/icons-material";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Link from "next/link";
-import styles from './layout.module.css';
+import styles from '../layout.module.css';
 
 const ContactMe = () => {
   return (

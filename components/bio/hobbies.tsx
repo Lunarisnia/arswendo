@@ -18,7 +18,7 @@ const Hobbies = () => {
       <br />
       <br />
       <Typography variant="h1" data-aos="fade-up" component="div">
-        My Projects
+        Hobbies
       </Typography>
     </Box>
   );

@@ -13,11 +13,11 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import relativeTime from "dayjs/plugin/relativeTime";
 import humanizeDuration from "humanize-duration";
+import styles from '../layout.module.css';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 const MONTH_YEAR = "MMMM YYYY";
 
-// Todo: Fix typo on guest stars! experiences.json
 
 const WorkHistory = () => {
   const history = experiences.map((exp, idx) => {
@@ -65,8 +65,8 @@ const WorkHistory = () => {
 
   return (
     <Box
+      className={styles.xToWorkHistory}
       sx={{
-        backgroundColor: "#42a5f5",
         display: "flex",
         justifyContent: "stretch",
         flexDirection: "column",

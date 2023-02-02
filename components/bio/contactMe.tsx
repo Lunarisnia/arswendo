@@ -6,8 +6,8 @@ import styles from '../layout.module.css';
 const ContactMe = () => {
   return (
     <Box
-      className={styles.xToContactMe}
       sx={{
+        backgroundColor: '#1a237e',
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",

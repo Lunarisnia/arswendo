@@ -1,0 +1,22 @@
+[
+    {
+        "title": "FINAL FANTASY 14",
+        "website": "https://na.finalfantasyxiv.com/",
+        "image": "/images/ffxiv.png"
+    },
+    {
+        "title": "THE WITCHER 3",
+        "website": "https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/",
+        "image": "/images/witcher3.jpg"
+    },
+    {
+        "title": "GUILTY GEAR -STRIVE-",
+        "website": "https://store.steampowered.com/app/1384160/GUILTY_GEAR_STRIVE/",
+        "image": "/images/ggst.jpg"
+    },
+    {
+        "title": "DIVINITY: ORIGINAL SIN 2",
+        "website": "https://store.steampowered.com/app/435150/Divinity_Original_Sin_2__Definitive_Edition/",
+        "image": "/images/divinity2.jpg"
+    }
+]

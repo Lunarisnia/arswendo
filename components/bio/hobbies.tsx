@@ -10,6 +10,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import videogames from "../../bin/videogames.json";
 
 import styles from "../layout.module.css";
 
@@ -37,8 +38,19 @@ const Hobbies = () => {
 // Todo: Shows my favorite shows, video games, steam replays (?)
 
 const MyTopFour = () => {
+  const videogameList = videogames.map((videogame, idx) => {
+    // Don't put more than 4 in the json or it will break
+    const { image, website, title } = videogame;
+
+    return (
+      <Grid item lg={3}>
+        <GameCard image={image} website={website} title={title} />
+      </Grid>
+    );
+  });
+
   return (
-    <Container data-aos='fade-left' data-aos-delay='100'>
+    <Container data-aos="fade-left" data-aos-delay="100">
       <Grid container rowSpacing={1} columnSpacing={2}>
         <Grid item xs={12}>
           <Box className={styles.myTopFive}>
@@ -46,22 +58,12 @@ const MyTopFour = () => {
               My Favorite Videogames
             </Typography>
             <Typography align="center" variant="subtitle1">
-              These games are important to me and I hope you give it a try as well!
+              These games are important to me and I hope you give it a try as
+              well!
             </Typography>
             <br />
             <Grid container>
-              <Grid item lg={3}>
-                <GameCard />
-              </Grid>
-              <Grid item lg={3}>
-                <GameCard />
-              </Grid>
-              <Grid item lg={3}>
-                <GameCard />
-              </Grid>
-              <Grid item lg={3}>
-                <GameCard />
-              </Grid>
+              {videogameList}
             </Grid>
           </Box>
         </Grid>
@@ -70,7 +72,13 @@ const MyTopFour = () => {
   );
 };
 
-const GameCard = () => {
+interface GameCardType {
+  title: string;
+  website: string;
+  image: string;
+}
+
+const GameCard = ({ title, website, image }: GameCardType) => {
   return (
     <Card className={styles.topFourCard}>
       <Box className={styles.overlayPopup}>
@@ -83,7 +91,7 @@ const GameCard = () => {
             width: 1,
           }}
           component="a"
-          href="https://na.finalfantasyxiv.com/"
+          href={website}
           target="__blank"
         >
           <IconButton>
@@ -92,15 +100,15 @@ const GameCard = () => {
         </Box>
       </Box>
       <CardMedia
-        image="/images/ffxiv.png"
+        image={image}
         alt="ALT"
         component="img"
-        sx={{objectFit: 'cover'}}
+        sx={{ objectFit: "cover" }}
         height={300}
       />
       <CardContent className={styles.transparentContainer}>
         <Typography color="white" variant="h3">
-          FINAL FANTASY 14
+          {title}
         </Typography>
       </CardContent>
     </Card>

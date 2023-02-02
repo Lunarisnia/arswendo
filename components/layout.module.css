@@ -25,3 +25,57 @@
 .xToWorkHistory {
   background: linear-gradient(180deg, rgba(41,121,255,1) 2%, rgba(26,35,126,1) 70%);
 }
+
+.myTopFive {
+  background-color: white;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color: gray;
+  border-radius: 20px;
+  margin: 40px;
+  padding: 40px 100px;
+}
+
+.topFourCard {
+  margin: 0px 20px;
+  height: 300px;
+  width: 200px;
+  position: relative;
+  filter: drop-shadow(0 0 0.15rem black);
+}
+
+
+.transparentContainer {
+  background-color: rgba(0, 0, 0, 0.3);
+  rotate: -25deg;
+  position: absolute;
+  bottom: -25%;
+  left: -4%;
+  width: 249%;
+  height: 110%;
+  padding-right: 230px;
+  padding-left: 40px;
+  transition: 1s ease;
+}
+
+.overlayPopup {
+  opacity: 0.0;
+  transition: 1s ease;
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  justify-items: center;
+}
+
+.topFourCard:hover .transparentContainer {
+  bottom: -200%;
+}
+
+.topFourCard:hover .overlayPopup {
+  opacity: .8;
+}

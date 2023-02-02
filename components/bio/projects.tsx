@@ -10,8 +10,23 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import Link from "../../src/Link";
+import projects from "../../bin/projects.json";
 
 const Projects = () => {
+  const projectCards = projects.map((p, idx) => {
+    const {title, description, image, website, is_ready: isReady, year} = p;
+    return (
+      <ProjectCard
+        cardTitle={title}
+        description={description}
+        year={year}
+        siteUrl={website}
+        isReady={isReady}
+        image={image}
+      />
+    );
+  });
+
   return (
     <Box
       sx={{
@@ -32,28 +47,7 @@ const Projects = () => {
         >
           My Projects
         </Typography>
-        <ProjectCard
-          cardTitle="Foo Bar Maker"
-          description="This is a description of a foobar maker that is not a real thing. This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing."
-          year="2023"
-          siteUrl="/"
-          isReady
-          image="images/placeholder.png"
-        />
-        <ProjectCard
-          cardTitle="Foo Bar Maker"
-          description="This is a description of a foobar maker that is not a real thing. This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing."
-          year="2023"
-          siteUrl="/"
-          image="images/placeholder.png"
-        />
-        <ProjectCard
-          cardTitle="Foo Bar Maker"
-          description="This is a description of a foobar maker that is not a real thing. This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing.This is a description of a foobar maker that is not a real thing."
-          year="2023"
-          siteUrl="/"
-          image="images/placeholder.png"
-        />
+        {projectCards}
       </Stack>
     </Box>
   );
@@ -96,7 +90,11 @@ const ProjectCard = ({
           <CardContent>
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Stack spacing={2} direction="row">
-                {isReady ? <GoToWebsiteButton siteUrl={siteUrl} /> : <ComingSoonButton />}
+                {isReady ? (
+                  <GoToWebsiteButton siteUrl={siteUrl} />
+                ) : (
+                  <ComingSoonButton />
+                )}
               </Stack>
             </Box>
           </CardContent>

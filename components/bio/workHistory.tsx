@@ -219,6 +219,7 @@ const GeneralInfo = ({
   isFreelance,
   aosEffect,
 }: GeneralInfoType) => {
+  const fontColor = 'white';
   const freelanceChip = isFreelance ? (
     <Typography align={align} variant="body1" data-aos={aosEffect} component='div'>
       <Chip label="Freelance" color="success" />
@@ -229,17 +230,17 @@ const GeneralInfo = ({
 
   return (
     <>
-      <Typography align={align} variant="h4" data-aos={aosEffect}>
+      <Typography align={align} variant="h4" data-aos={aosEffect} color={fontColor}>
         {position}
       </Typography>
-      <Typography align={align} variant="subtitle1" data-aos={aosEffect}>
+      <Typography align={align} variant="subtitle1" data-aos={aosEffect} color={fontColor}>
         {officeName}
       </Typography>
-      <Typography align={align} variant="body1" data-aos={aosEffect}>
+      <Typography align={align} variant="body1" data-aos={aosEffect} color={fontColor}>
         {dayjs(from).format(MONTH_YEAR)} -{" "}
         {to === "" ? "Current" : dayjs(to).format(MONTH_YEAR)}
       </Typography>
-      <Typography align={align} variant="body1" data-aos={aosEffect}>
+      <Typography align={align} variant="body1" data-aos={aosEffect} color={fontColor}>
         {duration}
       </Typography>
       {freelanceChip}

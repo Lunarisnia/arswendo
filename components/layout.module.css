@@ -21,3 +21,7 @@
 .xToContactMe {
   background: linear-gradient(180deg, rgba(41,121,255,1) 5%, rgba(26,35,126,1) 45%);
 }
+
+.xToWorkHistory {
+  background: linear-gradient(180deg, rgba(41,121,255,1) 2%, rgba(26,35,126,1) 70%);
+}

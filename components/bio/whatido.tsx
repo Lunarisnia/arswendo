@@ -19,7 +19,7 @@ const WhatIDo = () => {
         <Grid container spacing={2} rowSpacing={1}>
           <Grid item xs={12}>
             <Typography variant="h1" data-aos="fade-up">
-              I'am a Software Developer
+              I'am a Web Developer
             </Typography>
           </Grid>
           <Grid item xs={3}>

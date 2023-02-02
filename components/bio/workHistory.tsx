@@ -13,11 +13,11 @@ import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 import relativeTime from "dayjs/plugin/relativeTime";
 import humanizeDuration from "humanize-duration";
+import styles from '../layout.module.css';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 const MONTH_YEAR = "MMMM YYYY";
 
-// Todo: Fix typo on guest stars! experiences.json
 
 const WorkHistory = () => {
   const history = experiences.map((exp, idx) => {
@@ -65,8 +65,8 @@ const WorkHistory = () => {
 
   return (
     <Box
+      className={styles.xToWorkHistory}
       sx={{
-        backgroundColor: "#42a5f5",
         display: "flex",
         justifyContent: "stretch",
         flexDirection: "column",
@@ -219,6 +219,7 @@ const GeneralInfo = ({
   isFreelance,
   aosEffect,
 }: GeneralInfoType) => {
+  const fontColor = 'white';
   const freelanceChip = isFreelance ? (
     <Typography align={align} variant="body1" data-aos={aosEffect} component='div'>
       <Chip label="Freelance" color="success" />
@@ -229,17 +230,17 @@ const GeneralInfo = ({
 
   return (
     <>
-      <Typography align={align} variant="h4" data-aos={aosEffect}>
+      <Typography align={align} variant="h4" data-aos={aosEffect} color={fontColor}>
         {position}
       </Typography>
-      <Typography align={align} variant="subtitle1" data-aos={aosEffect}>
+      <Typography align={align} variant="subtitle1" data-aos={aosEffect} color={fontColor}>
         {officeName}
       </Typography>
-      <Typography align={align} variant="body1" data-aos={aosEffect}>
+      <Typography align={align} variant="body1" data-aos={aosEffect} color={fontColor}>
         {dayjs(from).format(MONTH_YEAR)} -{" "}
         {to === "" ? "Current" : dayjs(to).format(MONTH_YEAR)}
       </Typography>
-      <Typography align={align} variant="body1" data-aos={aosEffect}>
+      <Typography align={align} variant="body1" data-aos={aosEffect} color={fontColor}>
         {duration}
       </Typography>
       {freelanceChip}

@@ -17,6 +17,8 @@ dayjs.extend(duration);
 dayjs.extend(relativeTime);
 const MONTH_YEAR = "MMMM YYYY";
 
+// Todo: Fix typo on guest stars! experiences.json
+
 const WorkHistory = () => {
   const history = experiences.map((exp, idx) => {
     const {
@@ -120,7 +122,7 @@ const LeftCard = ({
       <Grid item xs={4}>
         <WorkData cardImage={cardImage} jobDesk={jobDesk} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={8}>
         <GeneralInfo
           position={position}
           duration={duration}
@@ -129,9 +131,9 @@ const LeftCard = ({
           to={to}
           isFreelance={isFreelance}
           align="left"
+          aosEffect="fade-left"
         />
       </Grid>
-      <Grid item xs={4}></Grid>
     </>
   );
 };
@@ -148,8 +150,7 @@ const RightCard = ({
 }: HistoryCard) => {
   return (
     <>
-      <Grid item xs={4}></Grid>
-      <Grid item xs={4}>
+      <Grid item xs={8}>
         <GeneralInfo
           position={position}
           from={from}
@@ -158,6 +159,7 @@ const RightCard = ({
           officeName={officeName}
           isFreelance={isFreelance}
           align="right"
+          aosEffect="fade-right"
         />
       </Grid>
       <Grid item xs={4}>
@@ -173,7 +175,7 @@ interface WorkDataType {
 }
 
 const WorkData = ({ cardImage, jobDesk }: WorkDataType) => {
-  const jobDeskList = jobDesk.map((job) => (<li>{job}</li>));
+  const jobDeskList = jobDesk.map((job, idx) => (<li key={idx}>{job}</li>));
 
   return (
     <Card data-aos="fade-up" data-aos-delay="200">
@@ -204,6 +206,7 @@ interface GeneralInfoType {
   to: string;
   align: "left" | "right";
   isFreelance?: boolean;
+  aosEffect: string;
 }
 
 const GeneralInfo = ({
@@ -214,9 +217,10 @@ const GeneralInfo = ({
   from,
   to,
   isFreelance,
+  aosEffect,
 }: GeneralInfoType) => {
   const freelanceChip = isFreelance ? (
-    <Typography align={align} variant="body1" data-aos="fade-up">
+    <Typography align={align} variant="body1" data-aos={aosEffect} component='div'>
       <Chip label="Freelance" color="success" />
     </Typography>
   ) : (
@@ -225,17 +229,17 @@ const GeneralInfo = ({
 
   return (
     <>
-      <Typography align={align} variant="h4" data-aos="fade-up">
+      <Typography align={align} variant="h4" data-aos={aosEffect}>
         {position}
       </Typography>
-      <Typography align={align} variant="subtitle1" data-aos="fade-up">
+      <Typography align={align} variant="subtitle1" data-aos={aosEffect}>
         {officeName}
       </Typography>
-      <Typography align={align} variant="body1" data-aos="fade-up">
+      <Typography align={align} variant="body1" data-aos={aosEffect}>
         {dayjs(from).format(MONTH_YEAR)} -{" "}
         {to === "" ? "Current" : dayjs(to).format(MONTH_YEAR)}
       </Typography>
-      <Typography align={align} variant="body1" data-aos="fade-up">
+      <Typography align={align} variant="body1" data-aos={aosEffect}>
         {duration}
       </Typography>
       {freelanceChip}

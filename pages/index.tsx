@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material";
 import Head from "next/head";
 import ContactMe from "../components/bio/contactMe";
 import Greeting from "../components/bio/greeting";
@@ -16,8 +17,10 @@ export default function Home() {
       <DevelopmentFlag />
       <Greeting />
       <WhatIDo />
-      <Projects />
-      <Hobbies />
+      <Stack spacing={30} direction="column" sx={{ backgroundColor: "#2979ff" }}>
+        <Projects />
+        <Hobbies />
+      </Stack>
       <WorkHistory />
       <ContactMe />
     </>

@@ -23,6 +23,7 @@ const Projects = () => {
         siteUrl={website}
         isReady={isReady}
         image={image}
+        key={idx}
       />
     );
   });

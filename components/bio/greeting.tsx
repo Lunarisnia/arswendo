@@ -13,8 +13,11 @@ const Greeting = () => {
         width: 1
       }}
     >
-      <Typography variant="h1" data-aos="fade-up">
-        Hi, I'm Rio
+      <Typography variant="h1" data-aos="fade-up" align='center'>
+        Hi, I'm Rio.
+      </Typography>
+      <Typography variant="h2" data-aos="fade-up" align='center'>
+        I love building awesome things with code.
       </Typography>
       <Typography variant="subtitle1" data-aos="fade-up" data-aos-delay="500">
         Scroll down to know me!

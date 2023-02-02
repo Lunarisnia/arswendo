@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Free Will?",
+        "description": "Follow the instruction given and the Computer will remove some tiles and slowly trap you untill it found you!",
+        "year": "2023",
+        "is_ready": false,
+        "image": "images/placeholder.png",
+        "website": "/game/free-will"
+    },
+    {
+        "title": "Tic Tac Bot",
+        "description": "An Implementation of Q-Learning to make the ultimate Tic Tac Toe Player you could never beat!",
+        "year": "2023",
+        "is_ready": false,
+        "image": "images/placeholder.png",
+        "website": "/game/ttb"
+    }
+]

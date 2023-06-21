@@ -12,16 +12,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Rio Arswendo</title>
+        <title>A Normal Looking Website</title>
       </Head>
-      <DevelopmentFlag />
+      {/* <DevelopmentFlag /> */}
       <Greeting />
       <WhatIDo />
-      <Stack spacing={30} direction="column" sx={{ backgroundColor: "#2979ff" }}>
+      {/* <Stack spacing={30} direction="column" sx={{ backgroundColor: "#2979ff" }}>
         <Projects />
         <Hobbies />
-      </Stack>
-      <WorkHistory />
+      </Stack> */}
+      {/* <WorkHistory /> */}
       <ContactMe />
     </>
   );

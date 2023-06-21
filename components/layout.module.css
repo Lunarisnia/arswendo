@@ -15,7 +15,7 @@
 }
 
 .xToWhatIDo {
-  background: linear-gradient(180deg, rgba(66,165,245,1) 0%, rgba(41,121,255,1) 62%);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 62%);
 }
 
 .xToContactMe {
@@ -23,7 +23,7 @@
 }
 
 .xToWorkHistory {
-  background: linear-gradient(180deg, rgba(41,121,255,1) 2%, rgba(26,35,126,1) 70%);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 2%, rgb(0, 0, 0) 70%);
 }
 
 .myTopFive {

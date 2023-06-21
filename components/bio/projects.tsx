@@ -31,7 +31,7 @@ const Projects = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#2979ff",
+        backgroundColor: "#000000",
         display: "flex",
         justifyContent: "flex-start",
         flexDirection: "column",

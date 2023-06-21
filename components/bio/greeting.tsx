@@ -5,7 +5,7 @@ const Greeting = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#42a5f5",
+        backgroundColor: "#000000",
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",
@@ -14,11 +14,11 @@ const Greeting = () => {
         width: 1
       }}
     >
-      <Typography variant="h1" data-aos="fade-up" align='center'>
-        Hi, I'm Rio.
+      <Typography variant="h1" data-aos="fade-up" align='center' color={"white"}>
+        Hi, Welcome
       </Typography>
-      <Typography variant="h4" data-aos="fade-up" align='center'data-aos-delay="200">
-        I love building awesome things with code.
+      <Typography variant="h4" data-aos="fade-up" align='center'data-aos-delay="200" color={"white"}>
+        I present to you this little gift
       </Typography>
       <br />
       <br />
@@ -31,10 +31,10 @@ const Greeting = () => {
       <br />
       <br />
       <br />
-      <Typography variant="subtitle1" data-aos="fade-down" data-aos-delay="500">
-        Scroll down to know me!
+      <Typography variant="subtitle1" data-aos="fade-down" data-aos-delay="500" color={"white"}>
+        Scroll down to know more!
       </Typography>
-      <KeyboardArrowDown fontSize='large' data-aos="fade-up" data-aos-delay="700" />
+      <KeyboardArrowDown fontSize='large' data-aos="fade-up" data-aos-delay="700" fill={"white"}/>
     </Box>
   );
 };
